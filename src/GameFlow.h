@@ -10,13 +10,13 @@ class GameFlow
 public :
     GameFlow();
 
-    int renderStartMenu();
-    void renderMakers();
-    void renderAbout();
-    void renderGameEnd();
+    int InfoStartMenu();
+    void InfoMakers();
+    void InfoAbout();
+    void InfoGameEnd();
 
-    int renderStageEnter(const int stage); // 게임 진입 시
-    int renderStageClear(const int stage, const int score); // 클리어 시
+    int InfoStageEnter(const int stage); // 게임 진입 시
+    int InfoStageClear(const int stage, const int score); // 클리어 시
     void setStageScore(int stage, int score);
 
 private :

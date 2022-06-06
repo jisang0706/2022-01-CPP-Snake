@@ -20,7 +20,7 @@ void GameManager::start()
     curGame = games;
     curGame->gameStart(frame);
     // 스테이지1 시작 프롬프트
-    if (game_flow->renderStageEnter(curStage + 1) == 0)
+    if (game_flow->InfoStageEnter(curStage + 1) == 0)
     {
         curGame->is_valid = false;
     }
@@ -72,7 +72,7 @@ void GameManager::stageSetting(const int score)
     }
 
     // 해당 스테이지 클리어 렌더링, 입력대기
-    if (game_flow->renderStageClear(curStage, score) == 0)
+    if (game_flow->InfoStageClear(curStage, score) == 0)
     {
         // 대기중 백스페이스 눌렀을 경우 종료
         curGame->is_valid = false;

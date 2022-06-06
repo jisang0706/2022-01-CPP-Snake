@@ -8,7 +8,7 @@ GameFlow::GameFlow()
 
 }
 
-void GameFlow::renderAbout()
+void GameFlow::InfoAbout()
 {
     WINDOW* window_about = newwin(MAP_Y - 2, MAP_X * 3 - 3, 2, 3);
     keypad(window_about, TRUE);
@@ -27,7 +27,7 @@ void GameFlow::renderAbout()
 }
 
 // 크레딧 출력하는 창
-void GameFlow::renderMakers()
+void GameFlow::InfoMakers()
 {
     WINDOW* window_makers = newwin(14, 19, 3, 22);
     keypad(window_makers, TRUE);
@@ -48,7 +48,7 @@ void GameFlow::renderMakers()
 }
 
 // 첫화면 시작메뉴 (처음 한번만 호출)
-int GameFlow::renderStartMenu()
+int GameFlow::InfoStartMenu()
 {
   WINDOW* window_start = newwin(12, 16, 5, 25);
   keypad(window_start, TRUE);
@@ -120,7 +120,7 @@ int GameFlow::renderStartMenu()
 
 
 // 게임 종료 시 한번 호출
-void GameFlow::renderGameEnd()
+void GameFlow::InfoGameEnd()
 {
   WINDOW* window_end = newwin(MAP_Y, MAP_X * 3 + 2, 1, 1);
 
@@ -152,7 +152,7 @@ void GameFlow::renderGameEnd()
 }
 
 // 게임매니저가 첫 스테이지 시작 전 호출 (각 스테이지 클리어 시 자동호출)
-int GameFlow::renderStageEnter(const int stage)
+int GameFlow::InfoStageEnter(const int stage)
 { 
   WINDOW* window_enter = newwin(MAP_Y / 2 + 1, MAP_X * 2, 6, 13);
 
@@ -177,7 +177,7 @@ int GameFlow::renderStageEnter(const int stage)
 }
 
 // 게임매니저가 스테이지 클리어 시 호출
-int GameFlow::renderStageClear(const int stage, const int score)
+int GameFlow::InfoStageClear(const int stage, const int score)
 {
   WINDOW* window_clear = newwin(MAP_Y / 2, MAP_X * 2, 6, 13);
 
@@ -190,7 +190,7 @@ int GameFlow::renderStageClear(const int stage, const int score)
 
   if(stage < MAX_STAGE)
   {
-    if(renderStageEnter(stage + 1))
+    if(InfoStageEnter(stage + 1))
     {
       return 1;
     }

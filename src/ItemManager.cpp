@@ -92,7 +92,7 @@ int ItemManager::eatItem(const Point& next_head_point, GameData &game_data){
 }
 void ItemManager::deleteItem(const int current_frame, GameData &game_data){
     for(int i = 0; i<items.size(); i++){
-        if(items.at(i).getCreatedframe() + disappear_frame <= current_frame ){
+        if(items.at(i).getCreatedFrame() + disappear_frame <= current_frame ){
             game_data.setPositionInfo(items.at(i).getPos().x, items.at(i).getPos().y, 0);
             game_data.mo_count[items.at(i).getPos().x/game_data.sq][items.at(i).getPos().y/game_data.sq]+=3;
             items.erase(items.begin()+i);
@@ -102,7 +102,7 @@ void ItemManager::deleteItem(const int current_frame, GameData &game_data){
 
 void ItemManager::update(GameData &game_data, UserData &user_data){
 
-    int current_frame = game_data.getCurrentframe();
+    int current_frame = game_data.getCurrentFrame();
     Point next_head_point = game_data.getNextHeadPoint();
     std::vector<std::vector<int> > map = game_data.getMap();
 

@@ -13,7 +13,7 @@ public:
     Item(const Point pos, const int kinds, const int frame);
     Point getPos();
     int getKinds();
-    int getCreatedframe();
+    int getCreatedFrame();
     void setPos(const Point pos);
     void setKinds(const int kinds);
     void setCreatedframe(const int frame);

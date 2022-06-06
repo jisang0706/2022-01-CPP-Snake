@@ -15,18 +15,18 @@ int main(void)
   // 시작메뉴
   while(1)
   {
-    int game_status = game_flow.renderStartMenu();
+    int game_status = game_flow.InfoStartMenu();
     if(game_status == 0) 
     {
       break;
     }
     else if(game_status == 1) 
     {
-      game_flow.renderAbout();
+      game_flow.InfoAbout();
     }
     else
     {
-      game_flow.renderMakers();
+      game_flow.InfoMakers();
       endwin();
       return 0;
     }
@@ -62,8 +62,8 @@ int main(void)
     usleep(5000);
   }
 
-  game_flow.renderGameEnd();  // 종료 시 보여줄 화면
-  game_flow.renderMakers();   // 크레딧
+  game_flow.InfoGameEnd();  // 종료 시 보여줄 화면
+  game_flow.InfoMakers();   // 크레딧
 
   endwin();
 

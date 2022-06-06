@@ -36,17 +36,17 @@ std::vector<int> GateManager::makeGateDirection(Point gate)
     return result;
 }
 
-GateManager::GateManager(const std::vector<std::vector<int> > snake_map)
+GateManager::GateManager(const std::vector<std::vector<int> > game_map)
 {
     for(int i=0 ; i<MAP_X ; i++)
     {
         for(int j=0 ; j<MAP_Y ; j++)
         {
-            if(snake_map[i][j] == WALL)
+            if(game_map[i][j] == WALL)
             {
                 wall_map[i][j]=-1;
             }
-            else if(snake_map[i][j] == IMMUNE_WALL)
+            else if(game_map[i][j] == IMMUNE_WALL)
             {
                 wall_map[i][j] = GATE_MANAGER_IMMUNE_WALL;
             }
@@ -54,9 +54,9 @@ GateManager::GateManager(const std::vector<std::vector<int> > snake_map)
     }
     
     int num=1;
-    for(int i=0 ; i<snake_map.size() ; i++)
+    for(int i=0 ; i<game_map.size() ; i++)
     {
-        for(int j=0 ; j<snake_map[i].size(); j++)
+        for(int j=0 ; j<game_map[i].size(); j++)
         {
             if(wall_map[i][j]==-1)
             {
@@ -112,20 +112,20 @@ void GateManager::update(GameData &game_data, UserData &user_data)
     if(game_data.getMap()[next_x][next_y] == GATE)
     {
         is_passing=true;
-        snake_entered_frame = game_data.getCurrentframe();
+        snake_entered_frame = game_data.getCurrentFrame();
     }
-    else if(exit_gate_frame == game_data.getCurrentframe())
+    else if(exit_gate_frame == game_data.getCurrentFrame())
     {
         check_wall[wall_map[gates.first.x][gates.first.y]]=0;
         check_wall[wall_map[gates.second.x][gates.second.y]]=0;
         isExist = false;
         is_passing=false;
         user_data.setUsedGateCount(user_data.getUsedGateCount() + 1);
-        last_gate_deleted_frame = game_data.getCurrentframe();
+        last_gate_deleted_frame = game_data.getCurrentFrame();
     }
     // 게이트 생성
     int gate_make_frame = last_gate_deleted_frame + live_time;
-    if(!is_passing && !isExist && gate_make_frame == game_data.getCurrentframe())
+    if(!is_passing && !isExist && gate_make_frame == game_data.getCurrentFrame())
     {
         makeNewGate();
         isExist = true;

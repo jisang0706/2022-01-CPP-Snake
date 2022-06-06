@@ -27,9 +27,9 @@ public:
     
     Point getNextHeadPoint();
 
-    void setCurrentframe(const int current_frame);
+    void setCurrentFrame(const int current_frame);
 
-    int getCurrentframe();
+    int getCurrentFrame();
     
     void updateDirection();
 
@@ -65,7 +65,7 @@ public:
 private:
     Point next_point;
     Point next_head_point;
-    SnakeMap* snake_map;
+    SnakeMap* game_map;
     int current_frame;
     int current_direction;
 

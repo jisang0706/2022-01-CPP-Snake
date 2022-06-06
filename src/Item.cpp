@@ -12,7 +12,7 @@ Item::Item(const Point pos, const int kinds, const int frame){
 int Item::getKinds(){ //아이템의 종류반환
     return kinds;
 }
-int Item::getCreatedframe(){//아이템 생성 시기 반환
+int Item::getCreatedFrame(){//아이템 생성 시기 반환
     return created_frame;
 } 
 void Item::setPos(const Point pos){//아이템의 위치 설정

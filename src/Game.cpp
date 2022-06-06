@@ -11,7 +11,7 @@ Game::Game()
 // 게임별 맵 저장, 게임매니저 생성자에서 각각 호출
 void Game::init(const int stage)
 {
-    my_stage = stage;
+    game_stage = stage;
     player = new Snake();
     game_data = new GameData(stage);
     user_data = new UserData();
@@ -77,8 +77,8 @@ int Game::isValid()
 void Game::update(const int frame)
 {
     game_data -> mapReset();   
-    game_data -> setCurrentframe(frame - my_start_frame);
-    user_data -> setCurrentframe(frame - my_start_frame);
+    game_data -> setCurrentFrame(frame - my_start_frame);
+    user_data -> setCurrentFrame(frame - my_start_frame);
     
     player -> update(*game_data, *user_data);
     item_manager -> update(*game_data, *user_data);

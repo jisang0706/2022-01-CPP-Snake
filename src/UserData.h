@@ -29,7 +29,7 @@ public:
     int getScore();
     void setUsedGateCount(const int used_gate_count);
     int getUsedGateCount();
-    void setCurrentframe(int current_frame);
+    void setCurrentFrame(int current_frame);
     void render();
 };
 

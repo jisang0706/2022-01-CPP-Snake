@@ -71,7 +71,7 @@ int UserData::getScore() {
     return max_length*10 + growth_item_count*5 + poison_item_count*5 + used_gate_count*20 + current_frame;
 }
 
-void UserData::setCurrentframe(int current_frame) {
+void UserData::setCurrentFrame(int current_frame) {
     this->current_frame = current_frame;
 }
 

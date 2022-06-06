@@ -39,7 +39,7 @@ private:
     std::vector<int> makeGateDirection(Point gate);
 
 public:
-    GateManager(const std::vector<std::vector<int> > snake_map);
+    GateManager(const std::vector<std::vector<int> > game_map);
     void makeNewGate();
     void update(GameData &game_data, UserData &user_data);
     std::pair<Point, Point> getGates();

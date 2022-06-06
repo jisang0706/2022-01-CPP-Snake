@@ -27,7 +27,7 @@ public :
     void gameEnd();
     int getScore();
 private :
-    int my_stage;
+    int game_stage;
     Snake* player;
     GameData* game_data;
     UserData* user_data;
