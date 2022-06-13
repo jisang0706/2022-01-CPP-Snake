@@ -14,12 +14,12 @@ void NcursesSetting()
     resize_term(MAP_Y + 2, MAP_X * 3 + 4);
     start_color();
 
-    init_pair(1, COLOR_RED, COLOR_RED);
+    init_pair(1, COLOR_MAGENTA, COLOR_YELLOW);
     attron(COLOR_PAIR(1));
-    border(ACS_VLINE, ACS_VLINE, ACS_HLINE, ACS_HLINE, ACS_ULCORNER, ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER);
+    border(96, 96, 96, 96, 96, 96, 96, 96);
     attroff(COLOR_PAIR(1));
 
-    mvprintw(0, 26, "  Snake  Game  ");
+    mvprintw(0, 22, "  2022  Snake  Game  ");
     refresh();
 }
 

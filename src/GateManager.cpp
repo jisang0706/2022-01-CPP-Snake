@@ -1,5 +1,6 @@
-#include "GateManager.h"
 #include <iostream>
+
+#include "GateManager.h"
 
 void GateManager::makeWallMap(const int num, const int x, const int y)
 {
@@ -71,7 +72,7 @@ GateManager::GateManager(const std::vector<std::vector<int> > game_map)
 
 void GateManager::makeNewGate()
 {
-    // 랜덤한 게이트 2개 만듬
+    // 랜덤 게이트 2개 만들기
     int d_x=0 , d_y=0;
     int gateNum1=0, gateNum2=0;
     Point gate1, gate2;

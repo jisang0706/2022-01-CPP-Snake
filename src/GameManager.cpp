@@ -13,7 +13,7 @@ GameManager::GameManager(GameFlow& gameflow) : game_flow(&gameflow)
     }
 }
 
-// 게임 시작 (첫 스테이지 시작) 시 한번
+// 게임 시작
 void GameManager::start()
 {
     // 첫스테이지 로드
@@ -28,7 +28,7 @@ void GameManager::start()
 
 void GameManager::end()
 {
-    //curGame->gameEnd();
+
 }
 
 // ui_manager 가 키 입력받고 게임에 세팅해줌
@@ -37,7 +37,7 @@ void GameManager::setInput()
     curGame->setInput();
 }
 
-// 매 프레임, 유효성 검사만
+// 매 프레임, 생존 검사
 int GameManager::isValid()
 {
     return curGame->isValid();

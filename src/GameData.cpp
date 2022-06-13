@@ -11,7 +11,7 @@ GameData::GameData(const int stage)
     mo_points.resize((sq+1)*(sq+1));
 
     for(int x = 0; x < sq +1; x++) {
-        for(int y=0; y <sq +1; y++) {
+        for(int y = 0; y < sq +1; y++) {
             mo_count[x].push_back(0);
         }
     }
@@ -28,8 +28,8 @@ GameData::GameData(const int stage)
         }
     }
     
-    mo_count[17/sq][10/sq]-=1;
-    mo_count[18/sq][10/sq]-=1;
+    mo_count[17/sq][10/sq] -= 1;
+    mo_count[18/sq][10/sq] -= 1;
     mo_count[19/sq][10/sq]-=1;
 
     window = newwin(MAP_Y, MAP_X * 2, 1, 1);
@@ -86,8 +86,7 @@ int GameData::getCurrentFrame()
     return current_frame;
 }
 
-// 키값 입력될때마다 방향 변경해줌
-
+// 키값 입력시 방향 전환
 void GameData::updateDirection()
 {
     if (kbhit())
@@ -95,24 +94,36 @@ void GameData::updateDirection()
         key = wgetch(window);
         switch (key)
         {
-        case KB_W:  // w
-        case KB_UP: // 위
-            current_direction = DIR_UP;
-            break;
-        case KB_S:    // s
-        case KB_DOWN: // 아래
-            current_direction = DIR_DOWN;
-            break;
-        case KB_RIGHT: // d
-        case KB_D:     // 오른
-            current_direction = DIR_RIGHT;
-            break;
-        case KB_A:    // a
-        case KB_LEFT: // 왼
-            current_direction = DIR_LEFT;
-            break;
-        default:
-            break;
+			// W, 위
+        	case KB_W:
+        	case KB_UP:
+				if (current_direction != DIR_DOWN)
+            		current_direction = DIR_UP;
+            	break;
+				
+			// A, 왼쪽
+        	case KB_A:
+        	case KB_LEFT:
+				if (current_direction != DIR_RIGHT)
+            		current_direction = DIR_LEFT;
+            	break;
+				
+			// S, 아래
+			case KB_S:
+        	case KB_DOWN:
+				if (current_direction != DIR_UP)
+            		current_direction = DIR_DOWN;
+            	break;
+			
+			// D, 오른쪽
+        	case KB_RIGHT:
+        	case KB_D:
+				if (current_direction != DIR_LEFT)
+            		current_direction = DIR_RIGHT;
+            	break;
+				
+        	default:
+            	break;
         }
     }
 }
@@ -144,28 +155,28 @@ wchar_t GameData::changeMap(const int i)
         switch(current_direction)
         {
             case DIR_UP:
-                temp = L'▲';
+                temp = L'⬆';
                 break;
             case DIR_DOWN:
-                temp = L'▼';
+                temp = L'⬇';
                 break;
             case DIR_RIGHT:
-                temp = L'▶';
+                temp = L'➡';
                 break;
             case DIR_LEFT:
-                temp = L'◀';
+                temp = L'⬅';
                 break;
         }
         break;
     case SNAKE_BODY:
-        temp = L'◎';
+        temp = L'⦿';
         break;
     case WALL:
     case IMMUNE_WALL:
         temp = L'■';
         break;
     case GATE:
-        temp = L'▦';
+        temp = L'▩';
         break;
     case GROWTH_ITEM:
         temp = L'★';
@@ -182,8 +193,7 @@ wchar_t GameData::changeMap(const int i)
 
 void GameData::updateItemPosition(const std::vector<Point>& item_positions, const std::vector<int>& item_infos)
 {
-    for (int i = 0; i < item_positions.size(); i++)
-    {
+    for (int i = 0; i < item_positions.size(); i++) {
         game_map->setPositionInfo(item_positions[i].x, item_positions[i].y, item_infos[i] + 5);
     }
 }
@@ -191,45 +201,40 @@ void GameData::updateItemPosition(const std::vector<Point>& item_positions, cons
 void GameData::updateSnakePosition(const std::vector<Point>& snake_body)
 {
     game_map->setPositionInfo(snake_body[0].x, snake_body[0].y, 1);
-    for (int i = 1; i < snake_body.size(); i++)
-    {
+	
+    for (int i = 1; i < snake_body.size(); i++) {
         game_map->setPositionInfo(snake_body[i].x, snake_body[i].y, 2);
     }
 }
 
 void GameData::updateGatePosition(bool isExist, const std::vector<Point>& gates)
 {
-    if (isExist)
-    {
-        for (int i = 0; i < this->gates.size(); i++)
-        {
+    if (isExist) {
+        for (int i = 0; i < this->gates.size(); i++) {
             game_map->setPositionInfo(this->gates[i].x, this->gates[i].y, WALL);
         }
 
-        for (int i = 0; i < gates.size(); i++)
-        {
+        for (int i = 0; i < gates.size(); i++) {
             game_map->setPositionInfo(gates[i].x, gates[i].y, GATE);
         }
+		
         this->gates = gates;
     }
-    else
-    {
-        for (int i = 0; i < this->gates.size(); i++)
-        {
+    else {
+        for (int i = 0; i < this->gates.size(); i++) {
             game_map->setPositionInfo(this->gates[i].x, this->gates[i].y, WALL);
         }
+		
         this->gates.clear();
     }
 }
 
 void GameData::updateGateDirection(bool isExist, const std::vector<std::vector<int> >& gate_directions)
 {
-    if (isExist)
-    {
+    if (isExist) {
         this->gate_directions = gate_directions;
     }
-    else
-    {
+    else {
         this->gate_directions.clear();
     }
 }
@@ -256,12 +261,9 @@ void GameData::setCurrentDirection(const int current_direction)
 
 void GameData::mapReset()
 {
-    for (int i = 0; i < 21; i++)
-    {
-        for (int j = 0; j < 21; j++)
-        {
-            if (game_map->getPositionInfo(i, j) == 1 || game_map->getPositionInfo(i, j) == 2)
-            {
+    for (int i = 0; i < 21; i++) {
+        for (int j = 0; j < 21; j++) {
+            if (game_map->getPositionInfo(i, j) == 1 || game_map->getPositionInfo(i, j) == 2) {
                 game_map->setPositionInfo(i, j, 0);
             }
         }

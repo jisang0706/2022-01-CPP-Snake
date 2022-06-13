@@ -5,7 +5,7 @@
 
 class Item{
 private:
-    Point pos; //아이템의 위치(position)
+    Point pos; // item position
 	int kinds; //아이템의 종류 (1:grwoth 2:poison)
 	int created_frame; //아이템 생성 시기
 public:

@@ -22,10 +22,11 @@ public :
 
     void gameStart(const int frame);
     void update(const int frame);
-    bool isClear();
     int isValid();
-    void gameEnd();
+    bool isClear();
     int getScore();
+    void gameEnd();
+	
 private :
     int game_stage;
     Snake* player;

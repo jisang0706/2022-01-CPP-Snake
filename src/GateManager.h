@@ -15,8 +15,8 @@ private:
     const int GATE_MANAGER_IMMUNE_WALL=-2;
     std::pair<Point, Point> gates;
     std::pair<std::vector<int>, std::vector<int> > gate_directions;
-    bool is_passing = false; // 뱀이 통과중인가?
-    int live_time=5;  // 게이트 생존시간 처리용
+    bool is_passing = false; // 뱀이 통과중?
+    int live_time=5;  // 게이트 생존시간
     int snake_entered_frame = -2100000000; // 뱀이 게이트에 처음 들어간 프레임
     int last_gate_deleted_frame = 1; // 게이트가 삭제된 프레임
     int wall_map[MAP_X][MAP_Y]={0,};
@@ -32,8 +32,8 @@ private:
         {DIR_LEFT, DIR_UP, DIR_DOWN, DIR_RIGHT},
     };
     
-    int dx[4] = {-1,1,0,0};
-    int dy[4] = {0,0,-1,1};
+    int dx[4] = {-1, 1, 0, 0};
+    int dy[4] = {0, 0, -1, 1};
     
     void makeWallMap(const int num, const int x, const int y);
     std::vector<int> makeGateDirection(Point gate);

@@ -35,7 +35,7 @@ bool Mission::isComplete(UserData &user_data){
 void Mission::render()
 {
     wborder(window, ACS_VLINE, ACS_VLINE, ACS_HLINE, ACS_HLINE, ACS_ULCORNER, ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER);
-    mvwprintw(window, 1, 1, "------MISSION------");
+    mvwprintw(window, 1, 1, "---------미션--------");
     mvwprintw(window, 3, 1, "B : %-2d (%c)", current_mission_list[0], current_mission_state[0] ? 'v' : ' ');
     mvwprintw(window, 4, 1, "+ : %-2d (%c)", current_mission_list[1], current_mission_state[1] ? 'v' : ' ');
     mvwprintw(window, 5, 1, "- : %-2d (%c)", current_mission_list[2], current_mission_state[2] ? 'v' : ' ');
