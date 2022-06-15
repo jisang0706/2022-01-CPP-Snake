@@ -16,7 +16,7 @@ public:
     int getCreatedFrame();
     void setPos(const Point pos);
     void setKinds(const int kinds);
-    void setCreatedframe(const int frame);
+    void setCreatedFrame(const int frame);
 };
 
 #endif

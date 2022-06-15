@@ -34,7 +34,7 @@ void Game::setInput()
 
 void Game::gameStart(const int frame)
 {
-    my_start_frame = frame - 1;
+    game_start_frame = frame - 1;
 }
 
 
@@ -79,8 +79,8 @@ int Game::isValid()
 void Game::update(const int frame)
 {
     game_data->mapReset();   
-    game_data->setCurrentFrame(frame - my_start_frame);
-    user_data->setCurrentFrame(frame - my_start_frame);
+    game_data->setCurrentFrame(frame - game_start_frame);
+    user_data->setCurrentFrame(frame - game_start_frame);
     
     player->update(*game_data, *user_data);
     item_manager->update(*game_data, *user_data);

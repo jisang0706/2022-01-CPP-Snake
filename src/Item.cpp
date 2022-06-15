@@ -26,7 +26,7 @@ void Item::setKinds(const int kinds){	//아이템의 종류 설정
     this -> kinds = kinds;
 }
 
-void Item::setCreatedframe(const int frame){	//아이템 생성 시기 설정
+void Item::setCreatedFrame(const int frame){	//아이템 생성 시기 설정
     created_frame = frame;
 }
 

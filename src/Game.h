@@ -36,7 +36,7 @@ private :
     Mission* mission;
     GateManager* gate_manager;
 
-    int my_start_frame;
+    int game_start_frame;
 
     Renderable* panels[3];
 };
